@@ -852,74 +852,74 @@ namespace DevCassio
             if (mustDebug)
                 Game.PrintChat("InitializeMainMenu Start");
 
-            Config = new Menu("DevCassio", "DevCassio", true);
+            Config = new Menu("DevCassio(TR)", "DevCassio", true);
 
-            var targetSelectorMenu = new Menu("Target Selector", "Target Selector");
+            var targetSelectorMenu = new Menu("Hedef Secme", "Target Selector");
             TargetSelector.AddToMenu(targetSelectorMenu);
             Config.AddSubMenu(targetSelectorMenu);
 
             Config.AddSubMenu(new Menu("Orbwalking", "Orbwalking"));
             Orbwalker = new Orbwalking.Orbwalker(Config.SubMenu("Orbwalking"));
 
-            Config.AddSubMenu(new Menu("Ultimate", "Ultimate"));
-            Config.SubMenu("Ultimate").AddItem(new MenuItem("UseAssistedUlt", "Use AssistedUlt").SetValue(true));
-            Config.SubMenu("Ultimate").AddItem(new MenuItem("AssistedUltKey", "Assisted Ult Key").SetValue((new KeyBind("R".ToCharArray()[0], KeyBindType.Press))));
-            Config.SubMenu("Ultimate").AddItem(new MenuItem("BlockUlt", "Block Ult will Not Hit").SetValue(true));
-            Config.SubMenu("Ultimate").AddItem(new MenuItem("UseUltUnderTower", "Ult Enemy Under Tower").SetValue(true));
-            Config.SubMenu("Ultimate").AddItem(new MenuItem("UltRange", "Ultimate Range").SetValue(new Slider(650, 0, 800)));
-            Config.SubMenu("Ultimate").AddItem(new MenuItem("RMinHit", "Min Enemies Hit").SetValue(new Slider(2, 1, 5)));
-            Config.SubMenu("Ultimate").AddItem(new MenuItem("RMinHitFacing", "Min Enemies Facing").SetValue(new Slider(1, 1, 5)));
+            Config.AddSubMenu(new Menu("Ulti", "Ultimate"));
+            Config.SubMenu("Ultimate").AddItem(new MenuItem("UseAssistedUlt", "Destekli Ulti Kullan").SetValue(true));
+            Config.SubMenu("Ultimate").AddItem(new MenuItem("AssistedUltKey", "Destekli Ulti Tuşu").SetValue((new KeyBind("R".ToCharArray()[0], KeyBindType.Press))));
+            Config.SubMenu("Ultimate").AddItem(new MenuItem("BlockUlt", "Hedefe değmediği zaman Ultiyi engelle").SetValue(true));
+            Config.SubMenu("Ultimate").AddItem(new MenuItem("UseUltUnderTower", "Düşman Kule Altındayken Ultile").SetValue(true));
+            Config.SubMenu("Ultimate").AddItem(new MenuItem("UltRange", "Ultimate Mesafesi").SetValue(new Slider(650, 0, 800)));
+            Config.SubMenu("Ultimate").AddItem(new MenuItem("RMinHit", "Minumum Hit").SetValue(new Slider(2, 1, 5)));
+            Config.SubMenu("Ultimate").AddItem(new MenuItem("RMinHitFacing", "Yüzü Dönük Sayısı").SetValue(new Slider(1, 1, 5)));
 
-            Config.AddSubMenu(new Menu("Combo", "Combo"));
-            Config.SubMenu("Combo").AddItem(new MenuItem("UseQCombo", "Use Q").SetValue(true));
-            Config.SubMenu("Combo").AddItem(new MenuItem("UseWCombo", "Use W").SetValue(true));
-            Config.SubMenu("Combo").AddItem(new MenuItem("UseECombo", "Use E").SetValue(true));
-            Config.SubMenu("Combo").AddItem(new MenuItem("UseRCombo", "Use R").SetValue(true));
-            Config.SubMenu("Combo").AddItem(new MenuItem("UseIgnite", "Use Ignite").SetValue(true));
-            Config.SubMenu("Combo").AddItem(new MenuItem("UseAACombo", "Use AA in Combo").SetValue(true));
-            Config.SubMenu("Combo").AddItem(new MenuItem("UseRSaveYourself", "Use R Save Yourself").SetValue(true));
-            Config.SubMenu("Combo").AddItem(new MenuItem("UseRSaveYourselfMinHealth", "Use R Save MinHealth").SetValue(new Slider(25, 0, 100)));
+            Config.AddSubMenu(new Menu("Kombo", "Combo"));
+            Config.SubMenu("Combo").AddItem(new MenuItem("UseQCombo", "Q'yu Kullan").SetValue(true));
+            Config.SubMenu("Combo").AddItem(new MenuItem("UseWCombo", "W'yu Kullan").SetValue(true));
+            Config.SubMenu("Combo").AddItem(new MenuItem("UseECombo", "E'yi Kullan").SetValue(true));
+            Config.SubMenu("Combo").AddItem(new MenuItem("UseRCombo", "R'yi Kullan").SetValue(true));
+            Config.SubMenu("Combo").AddItem(new MenuItem("UseIgnite", "Tutuşturu Kullan").SetValue(true));
+            Config.SubMenu("Combo").AddItem(new MenuItem("UseAACombo", "Kombo Sırasında Otomatik Atak Yap").SetValue(true));
+            Config.SubMenu("Combo").AddItem(new MenuItem("UseRSaveYourself", "R'yi Kendini Kurtarmak İçin Sakla").SetValue(true));
+            Config.SubMenu("Combo").AddItem(new MenuItem("UseRSaveYourselfMinHealth", "Kendini Yüzde Canın Altında Kurtar R").SetValue(new Slider(25, 0, 100)));
 
-            Config.AddSubMenu(new Menu("Harass", "Harass"));
-            Config.SubMenu("Harass").AddItem(new MenuItem("HarassToggle", "Harras Active (toggle)").SetValue(new KeyBind("G".ToCharArray()[0], KeyBindType.Toggle)));
-            Config.SubMenu("Harass").AddItem(new MenuItem("UseQHarass", "Use Q").SetValue(true));
-            Config.SubMenu("Harass").AddItem(new MenuItem("UseWHarass", "Use W").SetValue(false));
-            Config.SubMenu("Harass").AddItem(new MenuItem("UseEHarass", "Use E").SetValue(true));
+            Config.AddSubMenu(new Menu("Dürtme", "Harass"));
+            Config.SubMenu("Harass").AddItem(new MenuItem("HarassToggle", "OtomatikDürtme (Devamlı)").SetValue(new KeyBind("G".ToCharArray()[0], KeyBindType.Toggle)));
+            Config.SubMenu("Harass").AddItem(new MenuItem("UseQHarass", "Q'yu Kullan").SetValue(true));
+            Config.SubMenu("Harass").AddItem(new MenuItem("UseWHarass", "W'yu Kullan").SetValue(false));
+            Config.SubMenu("Harass").AddItem(new MenuItem("UseEHarass", "E'yi Kullan").SetValue(true));
 
-            Config.AddSubMenu(new Menu("Freeze", "Freeze"));
-            Config.SubMenu("Freeze").AddItem(new MenuItem("UseEFreeze", "Use E").SetValue(true));
+            Config.AddSubMenu(new Menu("Koridor Dondurma", "Freeze"));
+            Config.SubMenu("Freeze").AddItem(new MenuItem("UseEFreeze", "E'yi Kullan").SetValue(true));
 
-            Config.AddSubMenu(new Menu("LaneClear", "LaneClear"));
-            Config.SubMenu("LaneClear").AddItem(new MenuItem("UseQLaneClear", "Use Q").SetValue(true));
-            Config.SubMenu("LaneClear").AddItem(new MenuItem("UseWLaneClear", "Use W").SetValue(false));
-            Config.SubMenu("LaneClear").AddItem(new MenuItem("UseELaneClear", "Use E").SetValue(true));
-            Config.SubMenu("LaneClear").AddItem(new MenuItem("UseELastHitLaneClear", "Use E Only LastHit").SetValue(true));
-            Config.SubMenu("LaneClear").AddItem(new MenuItem("UseELastHitLaneClearNonPoisoned", "Use E LastHit on Non Poisoned creeps").SetValue(false));
-            Config.SubMenu("LaneClear").AddItem(new MenuItem("LaneClearMinMana", "LaneClear Min Mana").SetValue(new Slider(25, 0, 100)));
+            Config.AddSubMenu(new Menu("Koridor Temizleme", "LaneClear"));
+            Config.SubMenu("LaneClear").AddItem(new MenuItem("UseQLaneClear", "Q'yu Kullan").SetValue(true));
+            Config.SubMenu("LaneClear").AddItem(new MenuItem("UseWLaneClear", "W'yu Kullan").SetValue(false));
+            Config.SubMenu("LaneClear").AddItem(new MenuItem("UseELaneClear", "E'yi Kullan").SetValue(true));
+            Config.SubMenu("LaneClear").AddItem(new MenuItem("UseELastHitLaneClear", "E'yi Sadece SonVurusta Kullan").SetValue(true));
+            Config.SubMenu("LaneClear").AddItem(new MenuItem("UseELastHitLaneClearNonPoisoned", "Zehirlenmemişler için E yi Lasthitte Kullan").SetValue(false));
+            Config.SubMenu("LaneClear").AddItem(new MenuItem("LaneClearMinMana", "Koridor Temizlemek İçin Minumum Mana").SetValue(new Slider(25, 0, 100)));
 
-            Config.AddSubMenu(new Menu("JungleClear", "JungleClear"));
-            Config.SubMenu("JungleClear").AddItem(new MenuItem("UseQJungleClear", "Use Q").SetValue(true));
-            Config.SubMenu("JungleClear").AddItem(new MenuItem("UseEJungleClear", "Use E").SetValue(true));
+            Config.AddSubMenu(new Menu("Jungle Temizleme", "JungleClear"));
+            Config.SubMenu("JungleClear").AddItem(new MenuItem("UseQJungleClear", "Q'yu Kullan").SetValue(true));
+            Config.SubMenu("JungleClear").AddItem(new MenuItem("UseEJungleClear", "E'yi Kullan").SetValue(true));
 
-            Config.AddSubMenu(new Menu("Gapcloser", "Gapcloser"));
-            Config.SubMenu("Gapcloser").AddItem(new MenuItem("RAntiGapcloser", "R AntiGapcloser").SetValue(true));
-            Config.SubMenu("Gapcloser").AddItem(new MenuItem("RInterrupetSpell", "R InterruptSpell").SetValue(true));
-            Config.SubMenu("Gapcloser").AddItem(new MenuItem("RAntiGapcloserMinHealth", "R AntiGapcloser Min Health").SetValue(new Slider(60, 0, 100)));
+            Config.AddSubMenu(new Menu("MesafeKapatma Önleyici", "Gapcloser"));
+            Config.SubMenu("Gapcloser").AddItem(new MenuItem("RAntiGapcloser", "R'yi Mesafe Kapatmada Önle").SetValue(true));
+            Config.SubMenu("Gapcloser").AddItem(new MenuItem("RInterrupetSpell", "Önemli Büyüleri R ile boz").SetValue(true));
+            Config.SubMenu("Gapcloser").AddItem(new MenuItem("RAntiGapcloserMinHealth", "R Mesafe Kapatma Önleyici Kullanmak İçin Min Can").SetValue(new Slider(60, 0, 100)));
 
-            Config.AddSubMenu(new Menu("Misc", "Misc"));
-            Config.SubMenu("Misc").AddItem(new MenuItem("PacketCast", "No-Face Exploit (PacketCast)").SetValue(true));
+            Config.AddSubMenu(new Menu("Diğer", "Misc"));
+            Config.SubMenu("Misc").AddItem(new MenuItem("PacketCast", "Yüzü Dönmeden Skill At (PacketCast)").SetValue(true));
 
-            Config.AddSubMenu(new Menu("Im Legit! :)", "Legit"));
-            Config.SubMenu("Legit").AddItem(new MenuItem("PlayLegit", "Play Legit :)").SetValue(false));
-            Config.SubMenu("Legit").AddItem(new MenuItem("DisableNFE", "Disable No-Face Exploit").SetValue(true));
-            Config.SubMenu("Legit").AddItem(new MenuItem("LegitCastDelay", "Cast E Delay").SetValue(new Slider(1000, 0, 2000)));
+            Config.AddSubMenu(new Menu("Legit Menüsü", "Legit"));
+            Config.SubMenu("Legit").AddItem(new MenuItem("PlayLegit", "Legit(Yasal, Scripter gibi görünmeyen) Şekilde Oyna").SetValue(false));
+            Config.SubMenu("Legit").AddItem(new MenuItem("DisableNFE", "Yüzü Dönmeden Skill Atmayı Kapat").SetValue(true));
+            Config.SubMenu("Legit").AddItem(new MenuItem("LegitCastDelay", "E'ler Arası Süre").SetValue(new Slider(1000, 0, 2000)));
 
-            Config.AddSubMenu(new Menu("Drawings", "Drawings"));
-            Config.SubMenu("Drawings").AddItem(new MenuItem("QRange", "Q Range").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
-            Config.SubMenu("Drawings").AddItem(new MenuItem("WRange", "W Range").SetValue(new Circle(false, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
-            Config.SubMenu("Drawings").AddItem(new MenuItem("ERange", "E Range").SetValue(new Circle(false, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
-            Config.SubMenu("Drawings").AddItem(new MenuItem("RRange", "R Range").SetValue(new Circle(false, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
-            Config.SubMenu("Drawings").AddItem(new MenuItem("EDamage", "Show E Damage on HPBar").SetValue(true));
+            Config.AddSubMenu(new Menu("Çizimler", "Drawings"));
+            Config.SubMenu("Drawings").AddItem(new MenuItem("QRange", "Q'yu Çiz").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
+            Config.SubMenu("Drawings").AddItem(new MenuItem("WRange", "W'yu Çiz").SetValue(new Circle(false, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
+            Config.SubMenu("Drawings").AddItem(new MenuItem("ERange", "E'yi Çiz").SetValue(new Circle(false, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
+            Config.SubMenu("Drawings").AddItem(new MenuItem("RRange", "R'yi Çiz").SetValue(new Circle(false, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
+            Config.SubMenu("Drawings").AddItem(new MenuItem("EDamage", "HPBar'da E nin Hasarını Göster").SetValue(true));
 
             skinManager.AddToMenu(ref Config);
 
